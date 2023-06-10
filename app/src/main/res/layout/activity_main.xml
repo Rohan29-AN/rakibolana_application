@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".views.MainActivity">
 
+
+
+
     <TextView
         android:layout_gravity="center"
         android:gravity="center"
