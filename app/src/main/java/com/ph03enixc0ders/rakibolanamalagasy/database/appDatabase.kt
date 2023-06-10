@@ -1,11 +1,13 @@
 package com.ph03enixc0ders.rakibolanamalagasy.database
 
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.ph03enixc0ders.rakibolanamalagasy.dao.tenyDAO
+import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
 
-
+@Database(entities = [teny::class], exportSchema = false, version = 1)
 abstract class appDatabase:RoomDatabase() {
 
     companion object config{
