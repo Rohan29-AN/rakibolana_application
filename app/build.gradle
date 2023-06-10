@@ -10,7 +10,11 @@ android {
     dataBinding{
         enabled=true
     }
-    
+    buildFeatures {
+        viewBinding = true
+    }
+
+
     defaultConfig {
         applicationId "com.ph03enixc0ders.rakibolanamalagasy"
         minSdk 21
