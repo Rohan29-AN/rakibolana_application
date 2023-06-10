@@ -5,15 +5,14 @@ import androidx.lifecycle.LiveData
 import com.ph03enixc0ders.rakibolanamalagasy.database.appDatabase
 import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
 
-class tenyRepository {
+class tenyRepository(context:Context) {
 
     lateinit var appDatabaseInstance:appDatabase
 
     //constructor
 
-    fun tenyRepository(context:Context){
+    init {
         this.appDatabaseInstance=appDatabase.getInstance(context)
-
     }
 
 
