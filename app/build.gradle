@@ -7,6 +7,10 @@ android {
     namespace 'com.ph03enixc0ders.rakibolanamalagasy'
     compileSdk 32
 
+    dataBinding{
+        enabled=true
+    }
+    
     defaultConfig {
         applicationId "com.ph03enixc0ders.rakibolanamalagasy"
         minSdk 21
