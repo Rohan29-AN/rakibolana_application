@@ -13,9 +13,10 @@ interface tenyDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTeny(teny:teny);
 
-    @Query("Select * from Rakibolana")
+    @Query("Select * from rakibolana")
     fun getListTeny():LiveData<List<teny>>
 
-    @Query("SELECT * from Rakibolana where word like %:keyword%")
-    fun getListByWord(words:String):LiveData<List<teny>>;
+    @Query("SELECT * from rakibolana where word like '%' || :keyword || '%'")
+    fun getListByWord(keyword: String): LiveData<List<teny>>
+
 }

@@ -4,12 +4,16 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "rakibolana")
 data class teny(
-    @PrimaryKey
+    @ColumnInfo(name="id")
+    @PrimaryKey(autoGenerate = true)
+    val id:Int,
+
+
     @ColumnInfo(name="word")
-    val word:String?,
+    val word:String,
 
     @ColumnInfo(name = "definition")
-    val definition:String?
+    val definition:String
 )

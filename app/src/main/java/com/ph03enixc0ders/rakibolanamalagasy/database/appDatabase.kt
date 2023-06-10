@@ -7,11 +7,11 @@ import androidx.room.RoomDatabase
 import com.ph03enixc0ders.rakibolanamalagasy.dao.tenyDAO
 import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
 
-@Database(entities = [teny::class], exportSchema = false, version = 1)
+@Database(entities = [teny::class], exportSchema = false, version = 2)
 abstract class appDatabase:RoomDatabase() {
 
     companion object config{
-        val DATABASE_NAME="rakibolana_data.db"
+        val DATABASE_NAME="rakibolana.db"
         var instance:appDatabase?=null
         var LOCK= Object()
 

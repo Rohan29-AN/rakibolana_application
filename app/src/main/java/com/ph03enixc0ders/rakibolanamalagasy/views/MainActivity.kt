@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity() {
 
         this._viewModel.getAllList().observe(this, Observer {
             listTeny->
-                val _wordLength="Word length"+listTeny.size
-                _binding.wordNumber.setText(_wordLength)
+            val wordLength = "Word length: ${listTeny.size}"
+            _binding.wordNumber.text = wordLength
         })
     }
 }

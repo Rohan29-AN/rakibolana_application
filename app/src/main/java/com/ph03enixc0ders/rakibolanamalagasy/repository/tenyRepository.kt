@@ -7,7 +7,7 @@ import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
 
 class tenyRepository(context:Context) {
 
-    lateinit var appDatabaseInstance:appDatabase
+    var appDatabaseInstance:appDatabase
 
     //constructor
 
