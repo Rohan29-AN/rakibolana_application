@@ -8,5 +8,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initView()
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+
+    }
+
+    fun initView(){
+        this.supportActionBar?.hide();
     }
 }
