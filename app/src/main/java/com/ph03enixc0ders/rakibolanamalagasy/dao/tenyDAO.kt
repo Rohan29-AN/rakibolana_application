@@ -19,4 +19,8 @@ interface tenyDAO {
     @Query("SELECT * from rakibolana where word like '%' || :keyword || '%'")
     fun getListByWord(keyword: String): LiveData<List<teny>>
 
+
+    @Query("SELECT * from rakibolana where id= :id")
+    fun getListById(id: Int): LiveData<teny>
+
 }
