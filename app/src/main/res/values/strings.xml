@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Rakibolana Malagasy</string>
     <string name="title_activity_home">Home</string>
-    <string name="title_home">Home</string>
-    <string name="title_bookmark">Bookmark</string>
-    <string name="title_history">History</string>
-    <string name="title_settings">Settings</string>
+    <string name="title_home">Fandraisana</string>
+    <string name="title_bookmark">Marika</string>
+    <string name="title_history">Tahiry</string>
+    <string name="title_settings">Fikirakirana</string>
     <string name="word_number">Isan\'ny teny voarakitra ato : </string>
     <string name="todays_word">Teny anio </string>
     <string name="meanings">Fanazavana</string>
