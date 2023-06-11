@@ -3,8 +3,14 @@ package com.ph03enixc0ders.rakibolanamalagasy.views
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.ph03enixc0ders.rakibolanamalagasy.R
 import com.ph03enixc0ders.rakibolanamalagasy.databinding.ActivityMenuBinding
+import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
+import com.ph03enixc0ders.rakibolanamalagasy.utils.utilities
+import com.ph03enixc0ders.rakibolanamalagasy.viewmodels.tenyVM
 import com.ph03enixc0ders.rakibolanamalagasy.views.fragment.BookmarkFragment
 import com.ph03enixc0ders.rakibolanamalagasy.views.fragment.HistoryFragment
 import com.ph03enixc0ders.rakibolanamalagasy.views.fragment.HomeFragment
@@ -13,6 +19,7 @@ import com.ph03enixc0ders.rakibolanamalagasy.views.fragment.SettingFragment
 class Menu : AppCompatActivity() {
 
     lateinit var _binding:ActivityMenuBinding
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,10 +40,8 @@ class Menu : AppCompatActivity() {
         this.supportActionBar?.hide()
 
         //initialize fragment
-
         //Display the homefragment by default
         loadFragment(HomeFragment())
-
 
         //this function is used to set up the navigation listener
         onMenuClicked()
@@ -44,7 +49,6 @@ class Menu : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        //onMenuClicked()
     }
 
     fun loadFragment(fragment: Fragment){
