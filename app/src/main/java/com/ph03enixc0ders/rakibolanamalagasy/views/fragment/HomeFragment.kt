@@ -1,13 +1,21 @@
 package com.ph03enixc0ders.rakibolanamalagasy.views.fragment
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ph03enixc0ders.rakibolanamalagasy.R
+import com.ph03enixc0ders.rakibolanamalagasy.adapter.searchAdapter
 import com.ph03enixc0ders.rakibolanamalagasy.databinding.FragmentHomeBinding
 import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
 import com.ph03enixc0ders.rakibolanamalagasy.utils.utilities
@@ -43,6 +51,28 @@ class HomeFragment():Fragment() {
         initView()
     }
 
+    override fun onStart() {
+        super.onStart()
+        this.binding.searchValidate.setOnClickListener{
+            hideKeyboard()
+
+            var value=this.binding.search.text.toString().trim();
+            _viewModel.getListFilterByWord(value).observe(viewLifecycleOwner, Observer {
+                    result->
+
+                if(result.isEmpty()){
+                    Toast.makeText(context, "Miala tsiny ,tsy mbola voatahiry io teny io.", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    var data=result.get(0)
+                    this.binding.randomWord.text=data.word
+                    this.binding.definition.text=data.definition
+                }
+
+            })
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding=null
@@ -56,7 +86,11 @@ class HomeFragment():Fragment() {
         // Generate a random number based on the countData
         this._viewModel.getAllList().observe(viewLifecycleOwner, Observer {
                 listTeny->
+
+
+
             countData=listTeny.size
+
 
             this.binding.wordNumber.text=getString(R.string.word_number) + " "+utilities.addSpace(countData.toString())
 
@@ -70,8 +104,22 @@ class HomeFragment():Fragment() {
                 this.binding.definition.text=this._randomTeny.definition
             })
 
+
+            //TODO AUTO COMPLETION
+
         })
 
+
     }
+
+    @SuppressLint("ServiceCast")
+    private fun hideKeyboard() {
+        val inputMethodManager =
+            requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(binding.search.windowToken, 0)
+
+    }
+
+
 
 }

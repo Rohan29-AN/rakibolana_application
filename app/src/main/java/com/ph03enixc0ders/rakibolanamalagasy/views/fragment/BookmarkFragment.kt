@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ph03enixc0ders.rakibolanamalagasy.R
+import com.ph03enixc0ders.rakibolanamalagasy.databinding.FragmentBookmarkBinding
 import com.ph03enixc0ders.rakibolanamalagasy.databinding.FragmentHomeBinding
 
 class BookmarkFragment:Fragment() {
-    private var _binding: FragmentHomeBinding?=null
+    private var _binding: FragmentBookmarkBinding?=null
     private  val binding get()=_binding!!
 
 
@@ -18,7 +19,7 @@ class BookmarkFragment:Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding=FragmentHomeBinding.inflate(inflater,container,false)
+        _binding=FragmentBookmarkBinding.inflate(inflater,container,false)
         return  binding.root
     }
 

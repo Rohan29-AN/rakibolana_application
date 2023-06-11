@@ -13,6 +13,7 @@
         android:theme="@style/Theme.RakibolanaMalagasy"
         tools:targetApi="31">
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name=".views.Menu"
             android:exported="true">
             <meta-data

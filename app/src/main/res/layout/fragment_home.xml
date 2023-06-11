@@ -3,22 +3,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-   >
+    android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:layout_weight="4"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:background="@color/base_app">
             <TextView
                 android:textStyle="bold"
-                android:layout_marginTop="20dp"
                 android:textSize="30dp"
                 android:textAlignment="center"
                 android:textColor="@color/white"
@@ -36,16 +37,39 @@
                 android:layout_height="wrap_content"
                 android:text="@string/word_number"/>
 
-            <EditText
-                android:textColor="@color/black"
-                android:hint="Teny ho tadiavina"
-                android:paddingLeft="10dp"
-                android:drawableLeft="@drawable/ic_baseline_search_24"
-                android:background="@drawable/bordure_white"
+            <LinearLayout
                 android:layout_margin="20dp"
-                android:id="@+id/search"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_weight="8"
+                    android:textColor="@color/black"
+                    android:hint="Teny ho tadiavina"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/bordure_white"
+                    android:id="@+id/search"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp" />
+
+                <View
+                    android:layout_weight="0.2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"/>
+
+                <LinearLayout
+                    android:id="@+id/search_validate"
+                    android:gravity="center"
+                    android:layout_weight="1.8"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <View
+                        android:background="@drawable/ic_baseline_search"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"/>
+                </LinearLayout>
+            </LinearLayout>
 
             <TextView
                 android:layout_marginLeft="20dp"
@@ -56,31 +80,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/todays_word"/>
-
-
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:background="@color/white"
-            android:layout_weight="6"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="wrap_content">
+
             <View
                 android:background="@color/base_app"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"/>
+
             <RelativeLayout
                 android:background="@drawable/bordure_champagne"
                 android:layout_marginTop="-20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <LinearLayout
                     android:orientation="vertical"
                     android:paddingBottom="20dp"
                     android:paddingTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:id="@+id/random_word"
                         android:textSize="25dp"
@@ -96,6 +121,7 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <ImageView
                             android:padding="15dp"
                             android:src="@drawable/ic_baseline_content_copy_24"
@@ -103,6 +129,7 @@
                             android:layout_margin="5dp"
                             android:layout_width="60dp"
                             android:layout_height="60dp"/>
+
                         <ImageView
                             android:padding="15dp"
                             android:src="@drawable/ic_baseline_bookmark_add_24"
@@ -110,7 +137,6 @@
                             android:layout_margin="5dp"
                             android:layout_width="60dp"
                             android:layout_height="60dp"/>
-
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>
@@ -119,6 +145,7 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <TextView
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
@@ -127,30 +154,35 @@
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+
                 <View
                     android:background="@color/base_app"
                     android:layout_marginLeft="20dp"
                     android:layout_width="80dp"
                     android:layout_height="2dp"/>
+
                 <ScrollView
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:textSize="15dp"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true">
+
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/definition"
-                        android:text=""/>
+                        android:layout_height="wrap_content">
 
+                        <TextView
+                            android:textSize="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/definition"
+                            android:text=""/>
+                    </LinearLayout>
                 </ScrollView>
-
-
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
-
 </FrameLayout>

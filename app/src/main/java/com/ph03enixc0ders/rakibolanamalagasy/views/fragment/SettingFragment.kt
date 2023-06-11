@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ph03enixc0ders.rakibolanamalagasy.R
 import com.ph03enixc0ders.rakibolanamalagasy.databinding.FragmentHomeBinding
+import com.ph03enixc0ders.rakibolanamalagasy.databinding.FragmentSettingBinding
 
 class SettingFragment:Fragment() {
 
-    private var _binding: FragmentHomeBinding?=null
+    private var _binding: FragmentSettingBinding?=null
     private  val binding get()=_binding!!
 
 
@@ -19,7 +20,7 @@ class SettingFragment:Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding=FragmentHomeBinding.inflate(inflater,container,false)
+        _binding=FragmentSettingBinding.inflate(inflater,container,false)
         return  binding.root
     }
 
