@@ -26,4 +26,9 @@ class tenyRepository(context:Context) {
     fun getListFilterByWord(word:String):LiveData<List<teny>>{
         return this.appDatabaseInstance.tenyDAO().getListByWord(word)
     }
+
+    //get list by id
+    fun getListById(id:Int):LiveData<teny>{
+        return this.appDatabaseInstance.tenyDAO().getListById(id)
+    }
 }

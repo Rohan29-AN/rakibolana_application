@@ -8,7 +8,7 @@ import com.ph03enixc0ders.rakibolanamalagasy.repository.tenyRepository
 
 class tenyVM(application: Application):AndroidViewModel(application) {
 
-    lateinit var _tenyRepo:tenyRepository
+    var _tenyRepo:tenyRepository
 
    init {
        this._tenyRepo= tenyRepository(application)
@@ -21,6 +21,10 @@ class tenyVM(application: Application):AndroidViewModel(application) {
 
     fun getListFilterByWord(word:String):LiveData<List<teny>>{
         return this._tenyRepo.getListFilterByWord(word)
+    }
+
+    fun getWordById(id:Int):LiveData<teny>{
+        return this._tenyRepo.getListById(id)
     }
 
 }
