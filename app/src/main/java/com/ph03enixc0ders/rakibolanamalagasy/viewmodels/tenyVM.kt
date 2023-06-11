@@ -8,7 +8,7 @@ import com.ph03enixc0ders.rakibolanamalagasy.repository.tenyRepository
 
 class tenyVM(application: Application):AndroidViewModel(application) {
 
-    lateinit var _tenyRepo:tenyRepository
+    var _tenyRepo:tenyRepository
 
    init {
        this._tenyRepo= tenyRepository(application)
