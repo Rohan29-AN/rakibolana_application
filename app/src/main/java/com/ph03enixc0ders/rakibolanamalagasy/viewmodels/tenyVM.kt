@@ -23,4 +23,8 @@ class tenyVM(application: Application):AndroidViewModel(application) {
         return this._tenyRepo.getListFilterByWord(word)
     }
 
+    fun getWordById(id:Int):LiveData<teny>{
+        return this._tenyRepo.getListById(id)
+    }
+
 }
