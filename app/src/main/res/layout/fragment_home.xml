@@ -44,6 +44,8 @@
                 android:orientation="horizontal">
 
                 <EditText
+                    android:inputType="text|textNoSuggestions"
+                    android:maxLines="1"
                     android:layout_weight="8"
                     android:textColor="@color/black"
                     android:hint="Teny ho tadiavina"
