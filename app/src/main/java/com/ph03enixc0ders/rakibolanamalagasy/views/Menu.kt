@@ -1,5 +1,6 @@
 package com.ph03enixc0ders.rakibolanamalagasy.views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -62,7 +63,11 @@ class Menu : AppCompatActivity() {
         this._binding.bottomNav.setOnItemSelectedListener {
             when(it.itemId){
                     R.id.navigation_home->loadFragment(HomeFragment())
-                    R.id.navigation_history->loadFragment(HistoryFragment())
+                    R.id.navigation_history->{
+                       val intent=Intent(this,Historic::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
                     R.id.navigation_bookmark->loadFragment(BookmarkFragment())
                     R.id.navigation_settings->loadFragment(SettingFragment())
             }
@@ -70,6 +75,12 @@ class Menu : AppCompatActivity() {
         }
     }
 
+
+    override fun onResume() {
+      //  super.onResume()
+        loadFragment(HomeFragment())
+        super.onResume()
+    }
 
 
 
