@@ -31,4 +31,19 @@ class tenyRepository(context:Context) {
     fun getListById(id:Int):LiveData<teny>{
         return this.appDatabaseInstance.tenyDAO().getListById(id)
     }
+
+
+    // Retrieves the list of recently opened words.
+    fun getRecentlyOpenedWords(): LiveData<List<teny>> {
+        return this.appDatabaseInstance.tenyDAO().getRecentlyOpenedWords()
+    }
+
+    // Retrieves the list of marked words.
+    fun getMarkedWords(): LiveData<List<teny>> {
+        return this.appDatabaseInstance.tenyDAO().getMarkedWords()
+    }
+
+
+
+
 }

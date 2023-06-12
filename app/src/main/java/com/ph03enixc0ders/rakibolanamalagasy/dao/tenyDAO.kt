@@ -29,14 +29,14 @@ interface tenyDAO {
 
     // Retrieves all words that are recently opened.
     // If the word is recently opened, the status is set to 1.
-    @Query("SELECT * FROM rakibolana WHERE isRecentlyOpen = :status")
-    fun getRecentlyOpenedWords(status: Int): LiveData<List<teny>>
+    @Query("SELECT * FROM rakibolana WHERE isRecentlyOpen = 1")
+    fun getRecentlyOpenedWords(): LiveData<List<teny>>
 
 
     // Retrieves all words that are marked.
     // If the word is marked, the status is set to 1.
-    @Query("SELECT * FROM rakibolana WHERE isMarked = :status")
-    fun getMarkedWords(status: Int): LiveData<List<teny>>
+    @Query("SELECT * FROM rakibolana WHERE isMarked = 1")
+    fun getMarkedWords(): LiveData<List<teny>>
 
     // Marks a specific word as "marked" by setting the isMarked field to 1.
     @Query("UPDATE rakibolana SET isMarked = 1 WHERE id = :wordId")
