@@ -15,5 +15,11 @@ data class teny(
     val word:String,
 
     @ColumnInfo(name = "definition")
-    val definition:String
+    val definition:String,
+
+    @ColumnInfo(name="isRecentlyOpen")
+    val isRecentlyOpen:Int,
+
+    @ColumnInfo(name="isMarked")
+    val isMarked:Int
 )
