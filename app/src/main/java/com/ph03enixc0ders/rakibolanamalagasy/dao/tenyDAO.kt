@@ -38,13 +38,12 @@ interface tenyDAO {
     @Query("SELECT * FROM rakibolana WHERE isMarked = 1")
     fun getMarkedWords(): LiveData<List<teny>>
 
-    // Marks a specific word as "marked" by setting the isMarked field to 1.
-    @Query("UPDATE rakibolana SET isMarked = 1 WHERE id = :wordId")
-    fun markWordAsMarked(wordId: Int)
+    @Query("UPDATE rakibolana SET isMarked = :status WHERE id IN (:wordIds)")
+    fun updateWordMarkedStatus(status: Int, wordIds: List<Int>)
 
-    // Updates the status of a specific word as "recently opened" by setting the isRecentlyOpen field to 1.
-    @Query("UPDATE rakibolana SET isRecentlyOpen = 1 WHERE id = :wordId")
-    fun updateWordAsRecentlyOpened(wordId: Int)
+    @Query("UPDATE rakibolana SET isRecentlyOpen = :status WHERE id IN (:wordIds)")
+    fun updateWordRecentlyOpenedStatus(status: Int, wordIds: List<Int>)
+
 
 
 
