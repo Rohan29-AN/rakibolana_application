@@ -44,6 +44,19 @@ class tenyRepository(context:Context) {
     }
 
 
+    // Update word status to indicate recently opened
+    fun updateWordRecentlyOpenedStatus(status: Int, wordIds: List<Int>) {
+        return this.appDatabaseInstance.tenyDAO().updateWordRecentlyOpenedStatus(status, wordIds)
+    }
+
+    // Update word status to indicate marked
+    fun updateWordMarkedStatus(status: Int, wordIds: List<Int>) {
+        return this.appDatabaseInstance.tenyDAO().updateWordMarkedStatus(status, wordIds)
+    }
+
+
+
+
 
 
 }

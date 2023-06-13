@@ -7,16 +7,32 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.ph03enixc0ders.rakibolanamalagasy.R
+import com.ph03enixc0ders.rakibolanamalagasy.adapter.historyAdapter
+import com.ph03enixc0ders.rakibolanamalagasy.databinding.ActivityHistoricBinding
+import com.ph03enixc0ders.rakibolanamalagasy.databinding.ActivityMainBinding
+import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
+import com.ph03enixc0ders.rakibolanamalagasy.viewmodels.tenyVM
 
 class Historic : AppCompatActivity() {
+    lateinit var _binding: ActivityHistoricBinding
+    lateinit var adapter: historyAdapter
+    lateinit var viewModel:tenyVM
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_historic)
+        _binding=ActivityHistoricBinding.inflate(layoutInflater)
+        val view=_binding.root
+        setContentView(view)
+
         initView()
     }
 
@@ -47,6 +63,33 @@ class Historic : AppCompatActivity() {
             setDisplayShowTitleEnabled(true)
             setTitle(R.string.title_history)
         }
+
+        this.adapter= historyAdapter(this, emptyList())
+        this._binding.listView.adapter = this.adapter
+
+
+        //INITIALIZE VIEW MODEL
+        this.viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[tenyVM::class.java]
+
+        this.viewModel.getRecentlyOpenedWords().observe(this, Observer {
+                listTeny->
+            if(listTeny.size!=0){
+                //INITIALIZE LISTVIEW
+                this.adapter.updateData(listTeny)
+                this._binding.noResult.visibility= GONE
+                this._binding.listView.adapter=this.adapter
+                this._binding.listView.visibility= VISIBLE
+
+            }
+            else{
+                this._binding.listView.visibility= GONE
+                this._binding.noResult.visibility= VISIBLE
+            }
+
+        })
+
+
+
     }
 
     override fun onBackPressed() {

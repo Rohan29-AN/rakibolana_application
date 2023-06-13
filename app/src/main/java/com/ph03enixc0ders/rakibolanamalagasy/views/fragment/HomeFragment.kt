@@ -25,7 +25,8 @@ class HomeFragment():Fragment() {
 
     private var _binding:FragmentHomeBinding?=null
     private  val binding get()=_binding!!
-
+    private  var isWordAddedToHistory = false
+    private  var isObserving = false
 
     lateinit var _viewModel: tenyVM
     var _randomNumber:Int=0
@@ -53,24 +54,45 @@ class HomeFragment():Fragment() {
 
     override fun onStart() {
         super.onStart()
-        this.binding.searchValidate.setOnClickListener{
+        this.binding.searchValidate.setOnClickListener {
             hideKeyboard()
 
-            var value=this.binding.search.text.toString().trim();
-            _viewModel.getListFilterByWord(value).observe(viewLifecycleOwner, Observer {
-                    result->
+            val value = this.binding.search.text.toString().trim()
 
-                if(result.isEmpty()){
-                    Toast.makeText(context, "Miala tsiny ,tsy mbola voatahiry io teny io.", Toast.LENGTH_SHORT).show()
-                }
-                else{
-                    var data=result.get(0)
-                    this.binding.randomWord.text=data.word
-                    this.binding.definition.text=data.definition
-                }
+            if (!isObserving) {
+                isObserving = true // Set the flag to indicate that the observer is being processed
 
-            })
+                _viewModel.getListFilterByWord(value).observe(viewLifecycleOwner, Observer { result ->
+                    if (result.isEmpty()) {
+                        Toast.makeText(context, "Miala tsiny ,tsy mbola voatahiry io teny io.", Toast.LENGTH_SHORT).show()
+                    } else {
+                        val data = result[0]
+
+                        // TODO Check if the word has already been added to the history
+                        if (!isWordAddedToHistory) {
+                            val listId: MutableList<Int> = mutableListOf(data.id)
+                            try {
+                                Thread {
+                                    _viewModel.addWordToHistory(listId)
+                                }.start()
+
+                                println("INSERTION OK")
+                                isWordAddedToHistory = true // Set the flag to true to indicate that the word has been added
+                            } catch (e: Exception) {
+                                println("INSERTION KO ==> $e")
+                            }
+                        }
+
+                        println("HERE HERE")
+                        this.binding.randomWord.text = data.word
+                        this.binding.definition.text = data.definition
+                    }
+
+                    isObserving = false // Reset the flag after the observer finishes processing
+                })
+            }
         }
+
     }
 
     override fun onDestroy() {
