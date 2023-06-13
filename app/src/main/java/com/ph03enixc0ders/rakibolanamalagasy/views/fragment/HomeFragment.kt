@@ -56,17 +56,12 @@ class HomeFragment():Fragment() {
         super.onStart()
         this.binding.searchValidate.setOnClickListener {
             hideKeyboard()
-
             val value = this.binding.search.text.toString().trim()
-
-            if (!isObserving) {
-                isObserving = true // Set the flag to indicate that the observer is being processed
-
                 _viewModel.getListFilterByWord(value).observe(viewLifecycleOwner, Observer { result ->
-                    if (result.isEmpty()) {
+                    if (result == null) {
                         Toast.makeText(context, "Miala tsiny ,tsy mbola voatahiry io teny io.", Toast.LENGTH_SHORT).show()
                     } else {
-                        val data = result[0]
+                        val data = result
 
                         // TODO Check if the word has already been added to the history
                         if (!isWordAddedToHistory) {
@@ -75,23 +70,18 @@ class HomeFragment():Fragment() {
                                 Thread {
                                     _viewModel.addWordToHistory(listId)
                                 }.start()
-
                                 println("INSERTION OK")
                                 isWordAddedToHistory = true // Set the flag to true to indicate that the word has been added
                             } catch (e: Exception) {
                                 println("INSERTION KO ==> $e")
                             }
                         }
-
-                        println("HERE HERE")
                         this.binding.randomWord.text = data.word
                         this.binding.definition.text = data.definition
                     }
-
-                    isObserving = false // Reset the flag after the observer finishes processing
                 })
             }
-        }
+
 
     }
 
@@ -109,8 +99,6 @@ class HomeFragment():Fragment() {
         this._viewModel.getAllList().observe(viewLifecycleOwner, Observer {
                 listTeny->
 
-
-
             countData=listTeny.size
 
 
@@ -121,9 +109,14 @@ class HomeFragment():Fragment() {
 
             // Get a word from the table based on the randomNumber
             this._viewModel.getWordById(this._randomNumber).observe(viewLifecycleOwner, Observer { teny ->
-                this._randomTeny = teny
-                this.binding.randomWord.text=this._randomTeny.word
-                this.binding.definition.text=this._randomTeny.definition
+
+                if(!isObserving){
+                    isObserving=true
+                    this._randomTeny = teny
+                    this.binding.randomWord.text=this._randomTeny.word
+                    this.binding.definition.text=this._randomTeny.definition
+                }
+
             })
 
 
