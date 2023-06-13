@@ -8,54 +8,56 @@ import android.widget.BaseAdapter
 import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.ph03enixc0ders.rakibolanamalagasy.R
 import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
 
-class historyAdapter(val context: Context, private val tenyList:List<teny> ):BaseAdapter() {
+class historyAdapter(val context: Context, private var tenyList: List<teny>) : BaseAdapter() {
 
     override fun getCount(): Int {
         return this.tenyList.size
     }
 
-    override fun getItem(p0: Int): teny {
-        return this.tenyList.get(p0)
+    override fun getItem(position: Int): teny {
+        return this.tenyList[position]
     }
 
-    override fun getItemId(p0: Int): Long {
-        return p0.toLong()
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
     }
 
-    override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
-        val view:View
-        val viewHolder:ViewHolder
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        val view: View
+        val viewHolder: ViewHolder
 
-        if(p1===null){
-            view=LayoutInflater.from(context).inflate(R.layout.item_history,p2,false)
-            viewHolder=ViewHolder(view)
+        if (convertView == null) {
+            view = LayoutInflater.from(context).inflate(R.layout.item_history, parent, false)
+            viewHolder = ViewHolder(view)
+            view.tag = viewHolder
+        } else {
+            view = convertView
+            viewHolder = view.tag as ViewHolder
         }
-        else{
-            view=p1
-            viewHolder=view.tag as ViewHolder
+
+        val teny = getItem(position)
+        viewHolder.word.text = teny.word
+        viewHolder.checkBox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                Toast.makeText(context, "Checked: ${teny.word}", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "Unchecked: ${teny.word}", Toast.LENGTH_SHORT).show()
+            }
         }
 
-        val teny=getItem(p0)
-        viewHolder.word.text=teny.word
-//        viewHolder.checkBox.setOnCheckedChangeListener{
-//            _,isChecked->
-//            if(isChecked){
-//                Toast.makeText(context,"Checked: ${teny.word}",Toast.LENGTH_SHORT)
-//            }
-//            else{
-//                Toast.makeText(context,"Unchecked: ${teny.word}",Toast.LENGTH_SHORT)
-//            }
-//        }
-        return view!!
+        return view
     }
 
+    private class ViewHolder(view: View) {
+        val word: TextView = view.findViewById(R.id.word)
+        val checkBox: CheckBox = view.findViewById(R.id.isChecked)
+    }
 
-    private class ViewHolder(view:View){
-        val word:TextView =view.findViewById(R.id.word)
-        val checkBox:CheckBox=view.findViewById(R.id.isChecked)
+    fun updateData(newData: List<teny>) {
+        this.tenyList = newData
+        notifyDataSetChanged()
     }
 }
