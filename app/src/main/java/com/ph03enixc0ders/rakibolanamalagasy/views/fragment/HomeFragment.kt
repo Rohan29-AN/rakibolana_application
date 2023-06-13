@@ -67,6 +67,10 @@ class HomeFragment():Fragment() {
                     var data=result.get(0)
                     this.binding.randomWord.text=data.word
                     this.binding.definition.text=data.definition
+
+                    // Add the current word to the history
+                    var listId: MutableList<Int> = mutableListOf(data.id)
+                    this._viewModel.addWordToHistory(listId)
                 }
 
             })
