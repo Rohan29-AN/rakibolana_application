@@ -23,7 +23,7 @@ class tenyRepository(context:Context) {
     }
 
     //get list with filter
-    fun getListFilterByWord(word:String):LiveData<List<teny>>{
+    fun getListFilterByWord(word:String):LiveData<teny>{
         return this.appDatabaseInstance.tenyDAO().getListByWord(word)
     }
 

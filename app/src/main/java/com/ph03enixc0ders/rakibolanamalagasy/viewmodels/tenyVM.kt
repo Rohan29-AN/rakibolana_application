@@ -20,7 +20,7 @@ class tenyVM(application: Application):AndroidViewModel(application) {
         return this._tenyRepo.getAllList()
     }
 
-    fun getListFilterByWord(word:String):LiveData<List<teny>>{
+    fun getListFilterByWord(word:String):LiveData<teny>{
         return this._tenyRepo.getListFilterByWord(word)
     }
 
