@@ -27,4 +27,16 @@ class tenyVM(application: Application):AndroidViewModel(application) {
         return this._tenyRepo.getListById(id)
     }
 
+    // Returns LiveData representing the list of recently opened words
+    fun getRecentlyOpenedWords(): LiveData<List<teny>> {
+        return this._tenyRepo.getRecentlyOpenedWords()
+    }
+
+    // Returns LiveData representing the list of marked words
+    fun getMarkedWords(): LiveData<List<teny>> {
+        return this._tenyRepo.getMarkedWords()
+    }
+
+
+
 }
