@@ -37,6 +37,39 @@ class tenyVM(application: Application):AndroidViewModel(application) {
         return this._tenyRepo.getMarkedWords()
     }
 
+    /**
+     * Adds the specified word to the history by updating its status as recently opened.
+     * @param wordIds List of word IDs to be added to the history.
+     */
+    fun addWordToHistory(wordIds: List<Int>) {
+        _tenyRepo.updateWordRecentlyOpenedStatus(1, wordIds)
+    }
+
+    /**
+     * Removes the specified word from the history by updating its status as not recently opened.
+     * @param wordIds List of word IDs to be removed from the history.
+     */
+    fun removeWordFromHistory(wordIds: List<Int>) {
+        _tenyRepo.updateWordRecentlyOpenedStatus(0, wordIds)
+    }
+
+    /**
+     * Marks the specified word as important by updating its status as marked.
+     * @param wordIds List of word IDs to be marked as important.
+     */
+    fun markWordAsImportant(wordIds: List<Int>) {
+        _tenyRepo.updateWordMarkedStatus(1, wordIds)
+    }
+
+    /**
+     * Removes the mark from the specified word by updating its status as not marked.
+     * @param wordIds List of word IDs to remove the mark from.
+     */
+    fun removeMarkFromWord(wordIds: List<Int>) {
+        _tenyRepo.updateWordMarkedStatus(0, wordIds)
+    }
+
+
 
 
 }
