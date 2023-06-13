@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
 import com.ph03enixc0ders.rakibolanamalagasy.repository.tenyRepository
+import java.util.concurrent.Future
 
 class tenyVM(application: Application):AndroidViewModel(application) {
 
@@ -26,6 +27,8 @@ class tenyVM(application: Application):AndroidViewModel(application) {
     fun getWordById(id:Int):LiveData<teny>{
         return this._tenyRepo.getListById(id)
     }
+
+
 
     // Returns LiveData representing the list of recently opened words
     fun getRecentlyOpenedWords(): LiveData<List<teny>> {
