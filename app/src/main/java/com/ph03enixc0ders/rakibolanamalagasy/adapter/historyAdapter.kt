@@ -10,8 +10,11 @@ import android.widget.TextView
 import android.widget.Toast
 import com.ph03enixc0ders.rakibolanamalagasy.R
 import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
+import com.ph03enixc0ders.rakibolanamalagasy.event.OnClickItemInterface
 
 class historyAdapter(val context: Context, private var tenyList: List<teny>) : BaseAdapter() {
+
+    private var onItemCheckedChangeListener: OnClickItemInterface? = null
 
     override fun getCount(): Int {
         return this.tenyList.size
@@ -40,12 +43,16 @@ class historyAdapter(val context: Context, private var tenyList: List<teny>) : B
 
         val teny = getItem(position)
         viewHolder.word.text = teny.word
-        viewHolder.checkBox.setOnCheckedChangeListener { _, isChecked ->
+        /*viewHolder.checkBox.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 Toast.makeText(context, "Checked: ${teny.word}", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(context, "Unchecked: ${teny.word}", Toast.LENGTH_SHORT).show()
             }
+        }*/
+
+        viewHolder.checkBox.setOnCheckedChangeListener{ _,isChecked->
+           onItemCheckedChangeListener?.onItemCheckedChanged(teny,isChecked)
         }
 
         return view
@@ -59,5 +66,11 @@ class historyAdapter(val context: Context, private var tenyList: List<teny>) : B
     fun updateData(newData: List<teny>) {
         this.tenyList = newData
         notifyDataSetChanged()
+    }
+
+
+
+    fun setOnItemCheckedChangeListener(listener: OnClickItemInterface) {
+        this.onItemCheckedChangeListener = listener
     }
 }
