@@ -3,8 +3,11 @@ package com.ph03enixc0ders.rakibolanamalagasy.viewmodels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
 import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
 import com.ph03enixc0ders.rakibolanamalagasy.repository.tenyRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.concurrent.Future
 
 class tenyVM(application: Application):AndroidViewModel(application) {
@@ -53,7 +56,10 @@ class tenyVM(application: Application):AndroidViewModel(application) {
      * @param wordIds List of word IDs to be removed from the history.
      */
     fun removeWordFromHistory(wordIds: List<Int>) {
-        _tenyRepo.updateWordRecentlyOpenedStatus(0, wordIds)
+        viewModelScope.launch(Dispatchers.IO) {
+            _tenyRepo.updateWordRecentlyOpenedStatus(0, wordIds)
+        }
+
     }
 
     /**
@@ -69,7 +75,10 @@ class tenyVM(application: Application):AndroidViewModel(application) {
      * @param wordIds List of word IDs to remove the mark from.
      */
     fun removeMarkFromWord(wordIds: List<Int>) {
-        _tenyRepo.updateWordMarkedStatus(0, wordIds)
+        viewModelScope.launch(Dispatchers.IO) {
+            _tenyRepo.updateWordMarkedStatus(0, wordIds)
+        }
+
     }
 
 

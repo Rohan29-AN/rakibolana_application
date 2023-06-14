@@ -20,12 +20,15 @@ import com.ph03enixc0ders.rakibolanamalagasy.adapter.historyAdapter
 import com.ph03enixc0ders.rakibolanamalagasy.databinding.ActivityHistoricBinding
 import com.ph03enixc0ders.rakibolanamalagasy.databinding.ActivityMainBinding
 import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
+import com.ph03enixc0ders.rakibolanamalagasy.event.OnClickItemInterface
 import com.ph03enixc0ders.rakibolanamalagasy.viewmodels.tenyVM
 
-class Historic : AppCompatActivity() {
+class Historic : AppCompatActivity(),OnClickItemInterface {
     lateinit var _binding: ActivityHistoricBinding
     lateinit var adapter: historyAdapter
     lateinit var viewModel:tenyVM
+
+    var listOfWordSelected= mutableSetOf<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +49,10 @@ class Historic : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.delete->{
-                Toast.makeText(this,"Hello",Toast.LENGTH_LONG).show();
+                if(this.listOfWordSelected.size>0)
+                    this.viewModel.removeWordFromHistory(this.listOfWordSelected.toList())
+
+
                 return true
             }
         }
@@ -66,7 +72,7 @@ class Historic : AppCompatActivity() {
 
         this.adapter= historyAdapter(this, emptyList())
         this._binding.listView.adapter = this.adapter
-
+        this.adapter.setOnItemCheckedChangeListener(this)
 
         //INITIALIZE VIEW MODEL
         this.viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[tenyVM::class.java]
@@ -98,4 +104,14 @@ class Historic : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+    override fun onItemCheckedChanged(item: teny, isCheckBox: Boolean) {
+        if(isCheckBox){
+            this.listOfWordSelected.add(item.id)
+        }
+        else{
+            this.listOfWordSelected.remove(item.id)
+        }
+    }
+
 }
