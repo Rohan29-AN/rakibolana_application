@@ -52,6 +52,7 @@ class HomeFragment():Fragment() {
         initView()
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onStart() {
         super.onStart()
         this.binding.searchValidate.setOnClickListener {
