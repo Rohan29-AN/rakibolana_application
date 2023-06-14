@@ -49,7 +49,13 @@ class Historic : AppCompatActivity(),OnClickItemInterface {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.delete->{
-                Toast.makeText(this,"Hello $listOfWordSelected",Toast.LENGTH_LONG).show();
+               // Toast.makeText(this,"Hello $listOfWordSelected",Toast.LENGTH_LONG).show();
+                if(this.listOfWordSelected.size>0){
+                    this.viewModel.removeWordFromHistory(this.listOfWordSelected.toList())
+                }
+                else{
+                    Toast.makeText(this,"Misafidiana teny ho fafàna.",Toast.LENGTH_LONG).show();
+                }
                 return true
             }
         }
