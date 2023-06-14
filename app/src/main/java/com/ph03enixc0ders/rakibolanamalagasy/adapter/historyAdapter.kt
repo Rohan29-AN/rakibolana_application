@@ -43,13 +43,6 @@ class historyAdapter(val context: Context, private var tenyList: List<teny>) : B
 
         val teny = getItem(position)
         viewHolder.word.text = teny.word
-        /*viewHolder.checkBox.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                Toast.makeText(context, "Checked: ${teny.word}", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(context, "Unchecked: ${teny.word}", Toast.LENGTH_SHORT).show()
-            }
-        }*/
 
         viewHolder.checkBox.setOnCheckedChangeListener{ _,isChecked->
            onItemCheckedChangeListener?.onItemCheckedChanged(teny,isChecked)
