@@ -91,7 +91,7 @@ class Menu : AppCompatActivity() {
             when(extraValue){
                 "HISTORIC"->{
                     // If the extraValue is "HISTORIC", retrieve the teny_id from the intent
-                    val tenyId = intent.getIntExtra("TENY_ID", 0)
+                     tenyId = intent.getIntExtra("TENY_ID", 0)
 
                 }
             }

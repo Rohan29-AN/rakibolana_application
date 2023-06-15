@@ -146,7 +146,6 @@ class HomeFragment(var tenyId:Int):Fragment() {
     private fun displayWordUI(ID:Int){
         // Get a word from the table based on the randomNumber
         this._viewModel.getWordById(ID).observe(viewLifecycleOwner, Observer { teny ->
-
             if(!isObserving){
                 isObserving=true
                 this._randomTeny = teny
