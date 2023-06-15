@@ -45,7 +45,7 @@ class Menu : AppCompatActivity() {
 
         //initialize fragment
         //Display the homefragment by default
-        loadFragment(HomeFragment(null))
+        loadFragment(HomeFragment(0))
 
         //this function is used to set up the navigation listener
         onMenuClicked()
@@ -65,7 +65,7 @@ class Menu : AppCompatActivity() {
     fun onMenuClicked(){
         this._binding.bottomNav.setOnItemSelectedListener {
             when(it.itemId){
-                    R.id.navigation_home->loadFragment(HomeFragment(null))
+                    R.id.navigation_home->loadFragment(HomeFragment(0))
                     R.id.navigation_history->{
                        val intent=Intent(this,Historic::class.java)
                         startActivity(intent)
@@ -97,7 +97,7 @@ class Menu : AppCompatActivity() {
                }
            }
         } else {
-            loadFragment(HomeFragment(null))
+            loadFragment(HomeFragment(0))
             println("FROM OTHER")
         }
     }
