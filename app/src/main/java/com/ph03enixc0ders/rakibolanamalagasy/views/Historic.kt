@@ -115,7 +115,11 @@ class Historic : AppCompatActivity(),OnClickItemInterface {
     }
 
     override fun onItemClicked(item: teny) {
-
+        val intent= Intent(this,com.ph03enixc0ders.rakibolanamalagasy.views.Menu::class.java)
+        intent.putExtra("FROM","HISTORIC")
+        intent.putExtra("TENY_ID",item.id)
+        startActivity(intent)
+        finish()
     }
 
 }
