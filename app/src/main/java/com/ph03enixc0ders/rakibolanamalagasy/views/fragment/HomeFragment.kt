@@ -137,7 +137,12 @@ class HomeFragment(var tenyId:Int):Fragment() {
     }
 
 
-
+    /**
+    Displays a word in the UI based on the given ID.
+    Retrieves a word from the table using the provided ID and updates the UI with the word's information.
+    The function ensures that the UI update is performed only once.
+    @param ID The ID of the word to display.
+     */
     private fun displayWordUI(ID:Int){
         // Get a word from the table based on the randomNumber
         this._viewModel.getWordById(ID).observe(viewLifecycleOwner, Observer { teny ->
