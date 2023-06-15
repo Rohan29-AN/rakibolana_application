@@ -73,6 +73,7 @@ class Historic : AppCompatActivity(),OnClickItemInterface {
         this.adapter= historyAdapter(this, emptyList())
         this._binding.listView.adapter = this.adapter
         this.adapter.setOnItemCheckedChangeListener(this)
+        this.adapter.setOnItemClickedListener(this)
 
         //INITIALIZE VIEW MODEL
         this.viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[tenyVM::class.java]
@@ -95,7 +96,6 @@ class Historic : AppCompatActivity(),OnClickItemInterface {
         })
 
 
-
     }
 
     override fun onBackPressed() {
@@ -112,6 +112,10 @@ class Historic : AppCompatActivity(),OnClickItemInterface {
         else{
             this.listOfWordSelected.remove(item.id)
         }
+    }
+
+    override fun onItemClicked(item: teny) {
+
     }
 
 }
