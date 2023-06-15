@@ -98,17 +98,9 @@ class HomeFragment(var tenyId:Int):Fragment() {
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[tenyVM::class.java]
 
         // Retrieve word by ID from the constructor
-// If the `tenyId` is not equal to 0, load the word that corresponds to this ID
+        // If the `tenyId` is not equal to 0, load the word that corresponds to this ID
         if(this.tenyId!=0){
-                this._viewModel.getWordById(this.tenyId).observe(viewLifecycleOwner, Observer {
-                    teny->
-                    // Ensure that the observation is only performed once
-                    if(!isObserving){
-                        isObserving=true
-                        this.binding.randomWord.text=teny.word
-                        this.binding.definition.text=teny.definition
-                    }
-                })
+                displayWordUI(this.tenyId)
         }
         else{
             // Generate a random number based on the countData
@@ -123,18 +115,8 @@ class HomeFragment(var tenyId:Int):Fragment() {
                 // Generate a random number based on the countData
                 this._randomNumber= utilities.getRandomNumber(countData)
 
-                // Get a word from the table based on the randomNumber
-                this._viewModel.getWordById(this._randomNumber).observe(viewLifecycleOwner, Observer { teny ->
 
-                    if(!isObserving){
-                        isObserving=true
-                        this._randomTeny = teny
-                        this.binding.randomWord.text=this._randomTeny.word
-                        this.binding.definition.text=this._randomTeny.definition
-                    }
-
-                })
-
+                displayWordUI(this._randomNumber)
 
                 //TODO AUTO COMPLETION
 
@@ -156,5 +138,17 @@ class HomeFragment(var tenyId:Int):Fragment() {
 
 
 
+    private fun displayWordUI(ID:Int){
+        // Get a word from the table based on the randomNumber
+        this._viewModel.getWordById(ID).observe(viewLifecycleOwner, Observer { teny ->
 
+            if(!isObserving){
+                isObserving=true
+                this._randomTeny = teny
+                this.binding.randomWord.text=this._randomTeny.word
+                this.binding.definition.text=this._randomTeny.definition
+            }
+
+        })
+    }
 }
