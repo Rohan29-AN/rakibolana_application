@@ -21,7 +21,7 @@ import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
 import com.ph03enixc0ders.rakibolanamalagasy.utils.utilities
 import com.ph03enixc0ders.rakibolanamalagasy.viewmodels.tenyVM
 
-class HomeFragment():Fragment() {
+class HomeFragment(val tenyId:Int?):Fragment() {
 
     private var _binding:FragmentHomeBinding?=null
     private  val binding get()=_binding!!
@@ -92,9 +92,12 @@ class HomeFragment():Fragment() {
     }
 
     fun initView(){
+        //HIDE KEYBOARD
+
         //initialize viewModel
         this._viewModel= ViewModelProvider(requireActivity(),
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[tenyVM::class.java]
+
 
         // Generate a random number based on the countData
         this._viewModel.getAllList().observe(viewLifecycleOwner, Observer {
