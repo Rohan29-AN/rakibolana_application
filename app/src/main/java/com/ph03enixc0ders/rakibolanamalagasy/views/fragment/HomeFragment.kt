@@ -21,7 +21,7 @@ import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
 import com.ph03enixc0ders.rakibolanamalagasy.utils.utilities
 import com.ph03enixc0ders.rakibolanamalagasy.viewmodels.tenyVM
 
-class HomeFragment():Fragment() {
+class HomeFragment(var tenyId:Int):Fragment() {
 
     private var _binding:FragmentHomeBinding?=null
     private  val binding get()=_binding!!
@@ -32,7 +32,6 @@ class HomeFragment():Fragment() {
     var _randomNumber:Int=0
     var countData:Int=0
     lateinit var _randomTeny:teny
-
 
 
     override fun onCreateView(
@@ -92,38 +91,39 @@ class HomeFragment():Fragment() {
     }
 
     fun initView(){
+        //HIDE KEYBOARD
+
         //initialize viewModel
         this._viewModel= ViewModelProvider(requireActivity(),
             ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application))[tenyVM::class.java]
 
-        // Generate a random number based on the countData
-        this._viewModel.getAllList().observe(viewLifecycleOwner, Observer {
-                listTeny->
-
-            countData=listTeny.size
-
-
-            this.binding.wordNumber.text=getString(R.string.word_number) + " "+utilities.addSpace(countData.toString())
-
+        // Retrieve word by ID from the constructor
+        // If the `tenyId` is not equal to 0, load the word that corresponds to this ID
+        if(this.tenyId!=0){
+                displayWordUI(this.tenyId)
+        }
+        else{
             // Generate a random number based on the countData
-            this._randomNumber= utilities.getRandomNumber(countData)
+            this._viewModel.getAllList().observe(viewLifecycleOwner, Observer {
+                    listTeny->
 
-            // Get a word from the table based on the randomNumber
-            this._viewModel.getWordById(this._randomNumber).observe(viewLifecycleOwner, Observer { teny ->
+                countData=listTeny.size
 
-                if(!isObserving){
-                    isObserving=true
-                    this._randomTeny = teny
-                    this.binding.randomWord.text=this._randomTeny.word
-                    this.binding.definition.text=this._randomTeny.definition
-                }
+
+                this.binding.wordNumber.text=getString(R.string.word_number) + " "+utilities.addSpace(countData.toString())
+
+                // Generate a random number based on the countData
+                this._randomNumber= utilities.getRandomNumber(countData)
+
+
+                displayWordUI(this._randomNumber)
+
+                //TODO AUTO COMPLETION
 
             })
+        }
 
 
-            //TODO AUTO COMPLETION
-
-        })
 
 
     }
@@ -137,5 +137,22 @@ class HomeFragment():Fragment() {
     }
 
 
+    /**
+    Displays a word in the UI based on the given ID.
+    Retrieves a word from the table using the provided ID and updates the UI with the word's information.
+    The function ensures that the UI update is performed only once.
+    @param ID The ID of the word to display.
+     */
+    private fun displayWordUI(ID:Int){
+        // Get a word from the table based on the randomNumber
+        this._viewModel.getWordById(ID).observe(viewLifecycleOwner, Observer { teny ->
+            if(!isObserving){
+                isObserving=true
+                this._randomTeny = teny
+                this.binding.randomWord.text=this._randomTeny.word
+                this.binding.definition.text=this._randomTeny.definition
+            }
 
+        })
+    }
 }
