@@ -15,6 +15,7 @@ import com.ph03enixc0ders.rakibolanamalagasy.event.OnClickItemInterface
 class historyAdapter(val context: Context, private var tenyList: List<teny>) : BaseAdapter() {
 
     private var onItemCheckedChangeListener: OnClickItemInterface? = null
+    private var onItemClickedListener: OnClickItemInterface? = null
 
     override fun getCount(): Int {
         return this.tenyList.size
@@ -48,6 +49,10 @@ class historyAdapter(val context: Context, private var tenyList: List<teny>) : B
            onItemCheckedChangeListener?.onItemCheckedChanged(teny,isChecked)
         }
 
+        view.setOnClickListener{
+            onItemClickedListener?.onItemClicked(teny)
+        }
+
         return view
     }
 
@@ -65,5 +70,9 @@ class historyAdapter(val context: Context, private var tenyList: List<teny>) : B
 
     fun setOnItemCheckedChangeListener(listener: OnClickItemInterface) {
         this.onItemCheckedChangeListener = listener
+    }
+
+    fun setOnItemClickedListener(listener: OnClickItemInterface){
+        onItemClickedListener=listener
     }
 }

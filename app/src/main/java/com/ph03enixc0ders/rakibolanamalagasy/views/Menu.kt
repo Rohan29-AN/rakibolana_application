@@ -1,8 +1,11 @@
 package com.ph03enixc0ders.rakibolanamalagasy.views
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -42,7 +45,7 @@ class Menu : AppCompatActivity() {
 
         //initialize fragment
         //Display the homefragment by default
-        loadFragment(HomeFragment())
+        loadFragment(HomeFragment(0))
 
         //this function is used to set up the navigation listener
         onMenuClicked()
@@ -62,7 +65,7 @@ class Menu : AppCompatActivity() {
     fun onMenuClicked(){
         this._binding.bottomNav.setOnItemSelectedListener {
             when(it.itemId){
-                    R.id.navigation_home->loadFragment(HomeFragment())
+                    R.id.navigation_home->loadFragment(HomeFragment(0))
                     R.id.navigation_history->{
                        val intent=Intent(this,Historic::class.java)
                         startActivity(intent)
@@ -77,10 +80,26 @@ class Menu : AppCompatActivity() {
 
 
     override fun onResume() {
-      //  super.onResume()
-        loadFragment(HomeFragment())
         super.onResume()
+        val intent = getIntent()
+        val extraValue = intent.getStringExtra("FROM")
+
+        var tenyId:Int=0
+
+        // Check if the extraValue is not null
+        if (extraValue != null) {
+            when(extraValue){
+                "HISTORIC"->{
+                    // If the extraValue is "HISTORIC", retrieve the teny_id from the intent
+                     tenyId = intent.getIntExtra("TENY_ID", 0)
+
+                }
+            }
+        }
+        // Load the HomeFragment with the provided tenyId
+        loadFragment(HomeFragment(tenyId))
     }
+
 
 
 
