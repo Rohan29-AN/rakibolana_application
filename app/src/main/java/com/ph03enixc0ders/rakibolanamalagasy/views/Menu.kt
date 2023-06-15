@@ -1,8 +1,11 @@
 package com.ph03enixc0ders.rakibolanamalagasy.views
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -42,7 +45,7 @@ class Menu : AppCompatActivity() {
 
         //initialize fragment
         //Display the homefragment by default
-        loadFragment(HomeFragment())
+        loadFragment(HomeFragment(null))
 
         //this function is used to set up the navigation listener
         onMenuClicked()
@@ -62,7 +65,7 @@ class Menu : AppCompatActivity() {
     fun onMenuClicked(){
         this._binding.bottomNav.setOnItemSelectedListener {
             when(it.itemId){
-                    R.id.navigation_home->loadFragment(HomeFragment())
+                    R.id.navigation_home->loadFragment(HomeFragment(null))
                     R.id.navigation_history->{
                        val intent=Intent(this,Historic::class.java)
                         startActivity(intent)
@@ -78,9 +81,27 @@ class Menu : AppCompatActivity() {
 
     override fun onResume() {
       //  super.onResume()
-        loadFragment(HomeFragment())
+
         super.onResume()
+        println("MIVERINA ATOO")
+
+        val intent = getIntent()
+        val extraValue = intent.getStringExtra("FROM")
+
+        if (extraValue != null) {
+           when(extraValue){
+               "HISTORIC"->{
+                   val itemId=intent.getIntExtra("TENY_ID",0)
+                   loadFragment(HomeFragment(itemId))
+                   println("TENY ID ==>$itemId")
+               }
+           }
+        } else {
+            loadFragment(HomeFragment(null))
+            println("FROM OTHER")
+        }
     }
+
 
 
 
