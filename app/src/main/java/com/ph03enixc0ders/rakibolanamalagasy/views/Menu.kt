@@ -80,26 +80,24 @@ class Menu : AppCompatActivity() {
 
 
     override fun onResume() {
-      //  super.onResume()
-
         super.onResume()
-        println("MIVERINA ATOO")
-
         val intent = getIntent()
         val extraValue = intent.getStringExtra("FROM")
 
+        var tenyId:Int=0
+
+        // Check if the extraValue is not null
         if (extraValue != null) {
-           when(extraValue){
-               "HISTORIC"->{
-                   val itemId=intent.getIntExtra("TENY_ID",0)
-                   loadFragment(HomeFragment(itemId))
-                   println("TENY ID ==>$itemId")
-               }
-           }
-        } else {
-            loadFragment(HomeFragment(0))
-            println("FROM OTHER")
+            when(extraValue){
+                "HISTORIC"->{
+                    // If the extraValue is "HISTORIC", retrieve the teny_id from the intent
+                    val tenyId = intent.getIntExtra("TENY_ID", 0)
+
+                }
+            }
         }
+        // Load the HomeFragment with the provided tenyId
+        loadFragment(HomeFragment(tenyId))
     }
 
 
