@@ -141,9 +141,6 @@ class HomeFragment(var tenyId:Int):Fragment() {
         this.clipboardManager = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 
 
-
-
-
     }
 
     @SuppressLint("ServiceCast")
