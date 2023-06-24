@@ -120,8 +120,11 @@ class BookmarkFragment:Fragment() ,OnClickItemInterface{
             if(this.listOfWordSelected.size>0){
                 this.viewModel.removeMarkFromWord(this.listOfWordSelected.toList())
             }
-            else{
+            else if(this.binding.noResult.visibility=== View.VISIBLE){
                 Toast.makeText(requireContext(),R.string.listEmpty,Toast.LENGTH_SHORT).show()
+            }
+            else{
+                Toast.makeText(requireContext(),R.string.noneselected,Toast.LENGTH_SHORT).show()
             }
 
 

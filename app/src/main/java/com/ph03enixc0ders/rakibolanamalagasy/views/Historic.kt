@@ -47,9 +47,12 @@ class Historic : AppCompatActivity(),OnClickItemInterface {
                     this.viewModel.removeWordFromHistory(this.listOfWordSelected.toList())
                 }
 
-            else{
+            else if(this._binding.noResult.visibility=== VISIBLE){
                     Toast.makeText(this,R.string.listEmpty,Toast.LENGTH_SHORT).show()
             }
+                else{
+                    Toast.makeText(this,R.string.noneselected,Toast.LENGTH_SHORT).show()
+                }
 
                 return true
             }
