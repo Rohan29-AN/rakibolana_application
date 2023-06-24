@@ -1,22 +1,12 @@
 package com.ph03enixc0ders.rakibolanamalagasy.views
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.ph03enixc0ders.rakibolanamalagasy.R
 import com.ph03enixc0ders.rakibolanamalagasy.databinding.ActivityMenuBinding
-import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
-import com.ph03enixc0ders.rakibolanamalagasy.utils.utilities
-import com.ph03enixc0ders.rakibolanamalagasy.viewmodels.tenyVM
 import com.ph03enixc0ders.rakibolanamalagasy.views.fragment.BookmarkFragment
-import com.ph03enixc0ders.rakibolanamalagasy.views.fragment.HistoryFragment
 import com.ph03enixc0ders.rakibolanamalagasy.views.fragment.HomeFragment
 import com.ph03enixc0ders.rakibolanamalagasy.views.fragment.SettingFragment
 

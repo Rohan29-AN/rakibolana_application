@@ -11,7 +11,6 @@ import com.ph03enixc0ders.rakibolanamalagasy.viewmodels.tenyVM
 class MainActivity : AppCompatActivity() {
 
     lateinit var _binding:ActivityMainBinding
-    lateinit var _viewModel:tenyVM
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,14 +33,5 @@ class MainActivity : AppCompatActivity() {
         //HIDE ACTION BAR
         this.supportActionBar?.hide();
 
-        //INITIALIZE VIEWMODEL
-        this._viewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[tenyVM::class.java]
-
-
-        this._viewModel.getAllList().observe(this, Observer {
-            listTeny->
-            val wordLength = "Word length: ${listTeny.size}"
-            _binding.wordNumber.text = wordLength
-        })
     }
 }
