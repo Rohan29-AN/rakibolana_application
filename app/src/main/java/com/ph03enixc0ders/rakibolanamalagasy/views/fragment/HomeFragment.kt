@@ -3,6 +3,7 @@ package com.ph03enixc0ders.rakibolanamalagasy.views.fragment
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +33,7 @@ class HomeFragment(var tenyId:Int):Fragment() {
     var _randomNumber:Int=0
     var countData:Int=0
     lateinit var _randomTeny:teny
-
+    lateinit var data:teny;
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,7 +62,7 @@ class HomeFragment(var tenyId:Int):Fragment() {
                     if (result == null) {
                         Toast.makeText(context, "Miala tsiny ,tsy mbola voatahiry io teny io.", Toast.LENGTH_SHORT).show()
                     } else {
-                        val data = result
+                         data = result
 
                         // TODO Check if the word has already been added to the history
                         if (!isWordAddedToHistory) {
@@ -81,6 +82,10 @@ class HomeFragment(var tenyId:Int):Fragment() {
                     }
                 })
             }
+
+
+        //
+        this.onClick()
 
 
     }
@@ -148,11 +153,34 @@ class HomeFragment(var tenyId:Int):Fragment() {
         this._viewModel.getWordById(ID).observe(viewLifecycleOwner, Observer { teny ->
             if(!isObserving){
                 isObserving=true
+                data=teny
                 this._randomTeny = teny
                 this.binding.randomWord.text=this._randomTeny.word
                 this.binding.definition.text=this._randomTeny.definition
             }
 
         })
+    }
+
+
+    //Event
+
+    fun onClick(){
+            this.binding.mark.setOnClickListener{
+                // Change the status of the work as marked
+                var listWord:MutableList<Int> = mutableListOf()
+                //Add the Id of the word to the list
+                listWord+=data.id
+                try{
+                    Thread {
+                        this._viewModel.markWordAsImportant(listWord)
+                        Log.e("Update status","OK")
+                    }.start()
+
+                }
+                catch (e:Exception){
+                    Log.e("Update status","KO ${e.message}")
+                }
+            }
     }
 }

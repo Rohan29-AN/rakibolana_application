@@ -125,6 +125,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
+                            android:id="@+id/copy"
                             android:padding="15dp"
                             android:src="@drawable/ic_baseline_content_copy_24"
                             android:background="@drawable/bordure_white"
@@ -133,6 +134,7 @@
                             android:layout_height="60dp"/>
 
                         <ImageView
+                            android:id="@+id/mark"
                             android:padding="15dp"
                             android:src="@drawable/ic_baseline_bookmark_add_24"
                             android:background="@drawable/bordure_white"
