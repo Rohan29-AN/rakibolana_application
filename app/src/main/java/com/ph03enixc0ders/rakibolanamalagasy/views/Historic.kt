@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ph03enixc0ders.rakibolanamalagasy.R
@@ -42,9 +43,13 @@ class Historic : AppCompatActivity(),OnClickItemInterface {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.delete->{
-                if(this.listOfWordSelected.size>0)
+                if(this.listOfWordSelected.size>0){
                     this.viewModel.removeWordFromHistory(this.listOfWordSelected.toList())
+                }
 
+            else{
+                Toast.makeText(this,"Misafidiana teny ho fafana", Toast.LENGTH_SHORT).show()
+            }
 
                 return true
             }
