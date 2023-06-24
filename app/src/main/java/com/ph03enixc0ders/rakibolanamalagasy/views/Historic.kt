@@ -1,31 +1,24 @@
 package com.ph03enixc0ders.rakibolanamalagasy.views
 
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ph03enixc0ders.rakibolanamalagasy.R
-import com.ph03enixc0ders.rakibolanamalagasy.adapter.historyAdapter
+import com.ph03enixc0ders.rakibolanamalagasy.adapter.listAdapter
 import com.ph03enixc0ders.rakibolanamalagasy.databinding.ActivityHistoricBinding
-import com.ph03enixc0ders.rakibolanamalagasy.databinding.ActivityMainBinding
 import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
 import com.ph03enixc0ders.rakibolanamalagasy.event.OnClickItemInterface
 import com.ph03enixc0ders.rakibolanamalagasy.viewmodels.tenyVM
 
 class Historic : AppCompatActivity(),OnClickItemInterface {
     lateinit var _binding: ActivityHistoricBinding
-    lateinit var adapter: historyAdapter
+    lateinit var adapter: listAdapter
     lateinit var viewModel:tenyVM
 
     var listOfWordSelected= mutableSetOf<Int>()
@@ -70,7 +63,7 @@ class Historic : AppCompatActivity(),OnClickItemInterface {
             setTitle(R.string.title_history)
         }
 
-        this.adapter= historyAdapter(this, emptyList())
+        this.adapter= listAdapter(this, emptyList())
         this._binding.listView.adapter = this.adapter
         this.adapter.setOnItemCheckedChangeListener(this)
         this.adapter.setOnItemClickedListener(this)
