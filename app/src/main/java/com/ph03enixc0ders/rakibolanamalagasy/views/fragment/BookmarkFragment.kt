@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ph03enixc0ders.rakibolanamalagasy.R
 import com.ph03enixc0ders.rakibolanamalagasy.databinding.FragmentBookmarkBinding
@@ -20,6 +21,17 @@ class BookmarkFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding=FragmentBookmarkBinding.inflate(inflater,container,false)
+
+
+        val actionBar=(requireActivity() as AppCompatActivity).supportActionBar
+
+        actionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_back)
+            setDisplayShowTitleEnabled(true)
+            setTitle(R.string.title_bookmark)
+        }
+
         return  binding.root
     }
 
