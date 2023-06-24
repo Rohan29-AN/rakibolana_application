@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -53,6 +54,12 @@ class BookmarkFragment:Fragment() ,OnClickItemInterface{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        onClick()
     }
 
     override fun onDestroy() {
@@ -106,6 +113,22 @@ class BookmarkFragment:Fragment() ,OnClickItemInterface{
         intent.putExtra("FROM","BOOKMARK")
         intent.putExtra("TENY_ID",item.id)
         startActivity(intent)
+    }
+
+    fun onClick(){
+        this.binding.unmark.setOnClickListener{
+            if(this.listOfWordSelected.size>0){
+                this.viewModel.removeMarkFromWord(this.listOfWordSelected.toList())
+            }
+            else if(this.binding.noResult.visibility=== View.VISIBLE){
+                Toast.makeText(requireContext(),R.string.listEmpty,Toast.LENGTH_SHORT).show()
+            }
+            else{
+                Toast.makeText(requireContext(),R.string.noneselected,Toast.LENGTH_SHORT).show()
+            }
+
+
+        }
     }
 
 }
