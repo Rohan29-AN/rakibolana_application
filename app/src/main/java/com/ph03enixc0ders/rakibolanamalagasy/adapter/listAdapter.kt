@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.CheckBox
 import android.widget.TextView
-import android.widget.Toast
 import com.ph03enixc0ders.rakibolanamalagasy.R
 import com.ph03enixc0ders.rakibolanamalagasy.entity.teny
 import com.ph03enixc0ders.rakibolanamalagasy.event.OnClickItemInterface
 
-class historyAdapter(val context: Context, private var tenyList: List<teny>) : BaseAdapter() {
+class listAdapter(val context: Context, private var tenyList: List<teny>) : BaseAdapter() {
 
     private var onItemCheckedChangeListener: OnClickItemInterface? = null
     private var onItemClickedListener: OnClickItemInterface? = null

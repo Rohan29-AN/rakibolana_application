@@ -23,7 +23,7 @@ import com.ph03enixc0ders.rakibolanamalagasy.views.fragment.SettingFragment
 class Menu : AppCompatActivity() {
 
     lateinit var _binding:ActivityMenuBinding
-
+    lateinit var _currentFragment:Fragment
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,13 +40,12 @@ class Menu : AppCompatActivity() {
 
     fun initView(){
 
-        //hide action bar
-        this.supportActionBar?.hide()
 
         //initialize fragment
         //Display the homefragment by default
-        loadFragment(HomeFragment(0))
-
+        this._currentFragment=HomeFragment(0)
+        loadFragment(this._currentFragment)
+        supportActionBar?.hide()
         //this function is used to set up the navigation listener
         onMenuClicked()
     }
@@ -65,14 +64,26 @@ class Menu : AppCompatActivity() {
     fun onMenuClicked(){
         this._binding.bottomNav.setOnItemSelectedListener {
             when(it.itemId){
-                    R.id.navigation_home->loadFragment(HomeFragment(0))
+                    R.id.navigation_home->{
+                        this._currentFragment=HomeFragment(0)
+                        loadFragment(this._currentFragment)
+                        supportActionBar?.hide()
+                    }
                     R.id.navigation_history->{
                        val intent=Intent(this,Historic::class.java)
                         startActivity(intent)
                         finish()
                     }
-                    R.id.navigation_bookmark->loadFragment(BookmarkFragment())
-                    R.id.navigation_settings->loadFragment(SettingFragment())
+                    R.id.navigation_bookmark->{
+                        this._currentFragment=BookmarkFragment()
+                        loadFragment(this._currentFragment)
+                        supportActionBar?.show()
+                    }
+                    R.id.navigation_settings->{
+                        this._currentFragment=SettingFragment()
+                        loadFragment(this._currentFragment)
+                        supportActionBar?.show()
+                    }
             }
             true
         }
@@ -88,18 +99,14 @@ class Menu : AppCompatActivity() {
 
         // Check if the extraValue is not null
         if (extraValue != null) {
-            when(extraValue){
-                "HISTORIC"->{
-                    // If the extraValue is "HISTORIC", retrieve the teny_id from the intent
-                     tenyId = intent.getIntExtra("TENY_ID", 0)
-
-                }
+            if (extraValue == "HISTORIC" || extraValue == "BOOKMARK") {
+                // If the extraValue is "HISTORIC" or "BOOKMARK", retrieve the teny_id from the intent
+                tenyId = intent.getIntExtra("TENY_ID", 0)
             }
         }
         // Load the HomeFragment with the provided tenyId
         loadFragment(HomeFragment(tenyId))
     }
-
 
 
 
