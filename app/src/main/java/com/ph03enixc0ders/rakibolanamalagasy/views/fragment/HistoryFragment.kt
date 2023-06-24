@@ -1,9 +1,7 @@
 package com.ph03enixc0ders.rakibolanamalagasy.views.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import com.ph03enixc0ders.rakibolanamalagasy.R
 import com.ph03enixc0ders.rakibolanamalagasy.databinding.FragmentHistoryBinding
@@ -32,4 +30,6 @@ class HistoryFragment:Fragment(){
         super.onDestroy()
         _binding=null
     }
+
+
 }

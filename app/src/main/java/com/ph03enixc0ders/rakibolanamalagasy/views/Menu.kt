@@ -45,7 +45,7 @@ class Menu : AppCompatActivity() {
         //Display the homefragment by default
         this._currentFragment=HomeFragment(0)
         loadFragment(this._currentFragment)
-
+        supportActionBar?.hide()
         //this function is used to set up the navigation listener
         onMenuClicked()
     }
