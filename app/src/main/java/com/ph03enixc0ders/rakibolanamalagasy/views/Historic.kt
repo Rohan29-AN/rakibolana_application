@@ -48,7 +48,7 @@ class Historic : AppCompatActivity(),OnClickItemInterface {
                 }
 
             else{
-                Toast.makeText(this,"Misafidiana teny ho fafana", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this,R.string.listEmpty,Toast.LENGTH_SHORT).show()
             }
 
                 return true

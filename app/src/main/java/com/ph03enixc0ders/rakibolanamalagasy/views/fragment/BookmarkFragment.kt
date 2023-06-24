@@ -121,7 +121,7 @@ class BookmarkFragment:Fragment() ,OnClickItemInterface{
                 this.viewModel.removeMarkFromWord(this.listOfWordSelected.toList())
             }
             else{
-                Toast.makeText(requireContext(),"Misafidiana teny ho fafana",Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),R.string.listEmpty,Toast.LENGTH_SHORT).show()
             }
 
 
