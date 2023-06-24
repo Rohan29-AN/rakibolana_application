@@ -11,10 +11,12 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ph03enixc0ders.rakibolanamalagasy.R
 import com.ph03enixc0ders.rakibolanamalagasy.adapter.searchAdapter
 import com.ph03enixc0ders.rakibolanamalagasy.databinding.FragmentHomeBinding
@@ -96,7 +98,10 @@ class HomeFragment(var tenyId:Int):Fragment() {
     }
 
     fun initView(){
-        //HIDE KEYBOARD
+
+        //HIDE ACTION BAR
+        val actionBar=(requireActivity() as AppCompatActivity).supportActionBar
+        actionBar?.hide()
 
         //initialize viewModel
         this._viewModel= ViewModelProvider(requireActivity(),
