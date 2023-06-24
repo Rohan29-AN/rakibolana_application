@@ -99,12 +99,9 @@ class Menu : AppCompatActivity() {
 
         // Check if the extraValue is not null
         if (extraValue != null) {
-            when(extraValue){
-                "HISTORIC"->{
-                    // If the extraValue is "HISTORIC", retrieve the teny_id from the intent
-                     tenyId = intent.getIntExtra("TENY_ID", 0)
-
-                }
+            if (extraValue == "HISTORIC" || extraValue == "BOOKMARK") {
+                // If the extraValue is "HISTORIC" or "BOOKMARK", retrieve the teny_id from the intent
+                tenyId = intent.getIntExtra("TENY_ID", 0)
             }
         }
         // Load the HomeFragment with the provided tenyId
