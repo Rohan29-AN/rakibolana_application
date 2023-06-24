@@ -12,4 +12,14 @@
     <string name="noneselected">Misafidiana teny ho fafana azafady.</string>
     <string name="listEmpty">Tsy mbola misy teny afaka fafàna.</string>
     <string name="copy">Teny voadika soamantsara</string>
+    <string name="description_app">Ity rindra-kajy ity dia natao hijerena ny hevitr\'ireo teny Malagasy  izay mety ho fampiasa isan\'andro. </string>
+    <string name="thanking">Ankasitrahana feno ianao nisafidy ny Rakibolana Malagasy.Ireo teny rehetra hita ato dia afaka jerena ato @ tranokala <a href="www.rakibolana.org">Rakibolana.org</a> avokoa.</string>
+    <string name="about_project">Mahakasika ny "Code source"  miasa ato anatin\'ity "Projet" ity dia azonao jerena ato:</string>
+    <string name="project_link"><a href="https://github.com/Rohan29-AN/rakibolana_application.git">Rakibolana-Android</a></string>
+    <string name="mail_link">rohanrc101@gmail.com</string>
+    <string name="label">ph03nixC0ders</string>
+    <string name="version_app">1.0</string>
+    <string name="copyright">Juin 2023</string>
+    <string name="thanking_teams">Isaorana avokoa ireo nanampy rehetra na mivantana (Ph03nixC0ders) na tsia. Raha toa ka manana fanamarihana na te hiresaka aminay dia manasa anao hanoratra amin\'ny :</string>
+
 </resources>

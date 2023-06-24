@@ -24,13 +24,13 @@ class SettingFragment:Fragment() {
         _binding=FragmentSettingBinding.inflate(inflater,container,false)
 
         val actionBar=(requireActivity() as AppCompatActivity).supportActionBar
-
-        actionBar?.apply {
+        actionBar?.hide()
+        /*actionBar?.apply {
             setDisplayHomeAsUpEnabled(false)
             setHomeAsUpIndicator(R.drawable.ic_back)
             setDisplayShowTitleEnabled(true)
             setTitle(R.string.title_settings)
-        }
+        }*/
 
 
         return  binding.root

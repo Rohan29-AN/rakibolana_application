@@ -5,11 +5,198 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
    >
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Settings fragment" />
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginTop="0dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:paddingLeft="20dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/black"
+                android:background="@color/base_app_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="INONA IZANY ?"/>
+
+
+
+            <LinearLayout
+                android:padding="20dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Salama e!"/>
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description_app"/>
+
+                <TextView
+                    android:autoLink="web"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/thanking"/>
+
+            </LinearLayout>
+            <TextView
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:paddingLeft="20dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/black"
+                android:background="@color/base_app_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="KAODY ?"/>
+            <LinearLayout
+                android:padding="20dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_project"/>
+
+                <LinearLayout
+                    android:id="@+id/link_github"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/github"
+                        />
+                    <TextView
+                        android:textColor="@color/purple_700"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:autoLink="web"
+                        android:text="@string/project_link"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:paddingLeft="20dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/black"
+                android:background="@color/base_app_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NY MPAMORONA ?"/>
+            <LinearLayout
+                android:padding="20dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/thanking_teams"/>
+
+                <LinearLayout
+                    android:id="@+id/link_email"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/email"
+                        />
+                    <TextView
+                        android:textColor="@color/purple_700"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mail_link"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:paddingLeft="20dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/black"
+                android:background="@color/base_app_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MOMBAMOMBA"/>
+            <LinearLayout
+                android:padding="20dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:text="Laharana: "
+                        />
+                    <TextView
+                        android:id="@+id/version_app"
+                        android:textColor="@color/purple_700"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/version_app"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:text="Taona: "
+                        />
+                    <TextView
+                        android:id="@+id/copyright"
+                        android:textColor="@color/purple_700"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/copyright"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
 </FrameLayout>
