@@ -1,6 +1,8 @@
 package com.ph03enixc0ders.rakibolanamalagasy.views.fragment
 
 import android.annotation.SuppressLint
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -36,6 +38,8 @@ class HomeFragment(var tenyId:Int):Fragment() {
     var countData:Int=0
     lateinit var _randomTeny:teny
     lateinit var data:teny;
+    private lateinit var clipboardManager: ClipboardManager
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -133,6 +137,10 @@ class HomeFragment(var tenyId:Int):Fragment() {
             })
         }
 
+        //INITIALIZE CLIPBOARD
+        this.clipboardManager = requireContext().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+
+
 
 
 
@@ -161,7 +169,7 @@ class HomeFragment(var tenyId:Int):Fragment() {
                 data=teny
                 this._randomTeny = teny
                 this.binding.randomWord.text=this._randomTeny.word
-                this.binding.definition.text=this._randomTeny.definition
+                this.binding.definition.text=this._randomTeny.definition.replace("Ahitsio","")
             }
 
         })
@@ -187,5 +195,13 @@ class HomeFragment(var tenyId:Int):Fragment() {
                     Log.e("Update status","KO ${e.message}")
                 }
             }
+
+
+        this.binding.copy.setOnClickListener{
+            var textToCopy=data.word+": ${data.definition}";
+            val clipData=ClipData.newPlainText("teny",textToCopy)
+            this.clipboardManager.setPrimaryClip(clipData)
+            Toast.makeText(requireContext(),R.string.copy,Toast.LENGTH_SHORT).show()
+        }
     }
 }
