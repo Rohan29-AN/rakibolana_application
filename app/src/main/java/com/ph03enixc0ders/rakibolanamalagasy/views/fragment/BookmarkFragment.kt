@@ -41,7 +41,7 @@ class BookmarkFragment:Fragment() ,OnClickItemInterface{
         val actionBar=(requireActivity() as AppCompatActivity).supportActionBar
 
         actionBar?.apply {
-            setDisplayHomeAsUpEnabled(true)
+            setDisplayHomeAsUpEnabled(false)
             setHomeAsUpIndicator(R.drawable.ic_back)
             setDisplayShowTitleEnabled(true)
             setTitle(R.string.title_bookmark)

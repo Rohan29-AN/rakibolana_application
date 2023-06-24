@@ -56,6 +56,13 @@ class Historic : AppCompatActivity(),OnClickItemInterface {
 
                 return true
             }
+
+            android.R.id.home->{
+                val intent= Intent(this,com.ph03enixc0ders.rakibolanamalagasy.views.Menu::class.java)
+                startActivity(intent)
+                finish()
+                return true
+            }
         }
 
         return super.onOptionsItemSelected(item)

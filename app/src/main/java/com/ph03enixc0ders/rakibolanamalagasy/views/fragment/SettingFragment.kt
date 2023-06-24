@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ph03enixc0ders.rakibolanamalagasy.R
 import com.ph03enixc0ders.rakibolanamalagasy.databinding.FragmentHomeBinding
@@ -21,6 +22,17 @@ class SettingFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding=FragmentSettingBinding.inflate(inflater,container,false)
+
+        val actionBar=(requireActivity() as AppCompatActivity).supportActionBar
+        actionBar?.hide()
+        /*actionBar?.apply {
+            setDisplayHomeAsUpEnabled(false)
+            setHomeAsUpIndicator(R.drawable.ic_back)
+            setDisplayShowTitleEnabled(true)
+            setTitle(R.string.title_settings)
+        }*/
+
+
         return  binding.root
     }
 
