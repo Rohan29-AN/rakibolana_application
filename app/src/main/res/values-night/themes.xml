@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.RakibolanaMalagasy" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimary">@color/base_app</item>
         <item name="colorPrimaryVariant">@color/base_app</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/base_app</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/base_app</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/base_app</item>
+        <item name="colorOnSecondary">@color/base_app</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
